@@ -19,6 +19,11 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', UserSchema);
 
+app.get('/users', async (req, res) => {
+    const users = await User.find();
+    res.json(users);
+});
+
 app.post('/users', async (req, res) => {
     const { name, email } = req.body;
 
